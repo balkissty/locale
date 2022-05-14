@@ -1,6 +1,6 @@
 
 
-export default function Homepage(){
+export default function Navbar() {
     return(
         <div >
             <div className="bg-black text-white">
