@@ -2,8 +2,8 @@
 export default function Profile() {
     return(
         <div>
-            <div className="max-w-4xl mx-auto">
-                <p className="text-4xl pb-6">
+            <div className="max-w-4xl mx-auto mt-24">
+                <p className="text-3xl pb-6">
                     Edit Your Profile
                 </p>
                 <form className="grid">
