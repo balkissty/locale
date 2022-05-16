@@ -1,5 +1,18 @@
+import React from "react";
 
 export default function Users(){
+    const [firstName, setFirstName] = React.useState(null);
+    const [lastName, setLastName] = React.useState(null);
+  
+  React.useEffect(() => {
+    fetch('https://randomuser.me/api/')
+      .then(results => results.json())
+      .then(data => {
+        const {name} = data.results[0];
+        setFirstName(name.first);
+        setLastName(name.last);
+      });
+  }, []);
     return(
         <div>
             <div className="max-w-7xl mx-auto">
@@ -15,6 +28,11 @@ export default function Users(){
                 <div>
                     <p className="text-3xl mt-6">Users</p>
                 </div>
+
+                <div>
+                     Name: {!firstName || !lastName ? 'Loading...' : `${firstName} ${lastName}`}
+                </div>
+
             </div>
         </div>
     )
