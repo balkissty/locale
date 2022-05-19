@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 
 
-export default function Users(){
+export default function Users() {
     const [contacts, setContacts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [page, setPage] =useState(1)
+
+    
 
   const fetchData = (page) => {
     setIsLoading(true)
@@ -24,7 +26,6 @@ export default function Users(){
         setPage(page + 1)
    }
   }
-
   const handlePreviousPage = () => {
       // () => setPage(page - 1)
     if (page > 1){
@@ -119,4 +120,4 @@ export default function Users(){
             </div>
         </div>
     )
-}
+};
