@@ -12,7 +12,7 @@ export default function Navbar({ fixed }) {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+              className="text-md leading-relaxed inline-block mr-4 py-2 whitespace-nowrap text-white"
               href="#pablo"
             >
               <Link to="/">MyLocale</Link>
