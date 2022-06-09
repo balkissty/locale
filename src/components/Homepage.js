@@ -1,15 +1,26 @@
-
+import React from 'react';
+import { usePosition } from 'use-position';
 
 export default function Homepage() {
-    return(
-        <div>
-            <div className="max-w-7xl mx-auto py-10">
-                <p className="text-pink-600 text-xl">Hi!</p>
-            </div>
+  
+  const watch = true;
+  const {
+    latitude,
+    longitude,
+    timestamp,
+    accuracy,
+    error,
+  } = usePosition(watch);
 
-            <div>
-                
-            </div>
-        </div>
-    )
-} 
+  return (
+    <div>
+      <code className='Max-w-5xl mx-auto'>
+        latitude: {latitude}<br/>
+        longitude: {longitude}<br/>
+        timestamp: {timestamp}<br/>
+        accuracy: {accuracy && `${accuracy}m`}<br/>
+        error: {error}
+      </code>
+    </div>
+  );
+};

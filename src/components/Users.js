@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 
-
 export default function Users() {
     const [contacts, setContacts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -11,7 +10,7 @@ export default function Users() {
 
   const fetchData = (page) => {
     setIsLoading(true)
-    fetch(`https://reqres.in/api/users?page=${page}/404`)
+    fetch(`https://reqres.in/api/users?page=${page}`)
       .then(response => {
         return response.json()
       })
@@ -39,9 +38,9 @@ export default function Users() {
   }, [page])
 
     return(
-        <div>
-            <div className="max-w-7xl mx-auto">
-            <div className="flex justify-center">
+        <div className="container px-4 mx-auto">
+            <div className="">
+            <div className="flex justify-center flex-wrap">
                 <div className="mb-3 xl:w-96">
                     <div className="input-group mt-10 justify-end flex items-stretch w-full mb-4">
                         <input onChange={(event) => {setSearch(event.target.value)}} type="search" className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"/>
@@ -53,10 +52,7 @@ export default function Users() {
                     </div>
                     </div>
                 </div>
-
-                <div>
-                    <p className="text-3xl mt-6">Users</p>
-                </div>
+                <div className="text-3xl mt-6 mx-auto">Users</div>
 
                 <div className="mt-10">
                     <div className="flex flex-col">
@@ -83,14 +79,14 @@ export default function Users() {
                                     </th>
                                     </tr>
                                 </thead>
-                                {isLoading && <p>Loading...</p>}
+                                {isLoading && <caption>Loading...</caption>}
                                 {contacts.length > 0 && (
                                 <tbody>
                                     {contacts.filter((contacts) => {
                                         if (search === "") {
-                                            return contacts
+                                            return contacts;
                                         } else if (contacts.first_name.toLowerCase().includes(search.toLowerCase())) {
-                                            return contacts
+                                            return contacts;
                                         }
                                     }).map((user) => (
                                         <tr className="border-b" key={user.id}>
@@ -105,7 +101,7 @@ export default function Users() {
                                                 {user.email}
                                             </td>
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                <img className="border-2 rounded-full" src={user.avatar} alt="avatar" />
+                                                <img className="border-2 w-10 h-10 rounded" src={user.avatar} alt="avatar" />
                                             </td>
                                         </tr>
                                     ) )}
@@ -117,12 +113,12 @@ export default function Users() {
                             </div>
                             <div className="flex items-center justify-end mt-4 mb-4">
                                 <button onClick={handlePreviousPage} className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                                <svg className="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path></svg>
                                     Previous
                                 </button>
                                 <button onClick={handleNextPage} className="inline-flex items-center py-2 px-4 ml-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                     Next
-                                    <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                    <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                                 </button>
                             </div>
                         </div>
