@@ -1,26 +1,51 @@
-import React from 'react';
-import { usePosition } from 'use-position';
+import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
 
-export default function Homepage() {
-  
-  const watch = true;
-  const {
-    latitude,
-    longitude,
-    timestamp,
-    accuracy,
-    error,
-  } = usePosition(watch);
+function Homepage({ google, locations = [] }) {
+    const [lat, setLat] = useState(null);
+    const [lng, setLng] = useState(null);
+
+
+
+
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      setStatus('Geolocation is not supported by your browser');
+    } else {
+      setStatus('Locating...');
+      navigator.geolocation.getCurrentPosition((position) => {
+        setStatus(null);
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      }, () => {
+        setStatus('Unable to retrieve your location');
+      });
+    }
+  }
 
   return (
-    <div>
-      <code className='Max-w-5xl mx-auto'>
-        latitude: {latitude}<br/>
-        longitude: {longitude}<br/>
-        timestamp: {timestamp}<br/>
-        accuracy: {accuracy && `${accuracy}m`}<br/>
-        error: {error}
-      </code>
-    </div>
-  );
+      <Map
+          google={google}
+          containerStyle={{
+              position: "static",
+              width: "100%",
+              height: "100%"
+          }}
+          style={{
+              width: "100%",
+              height: "100%"
+          }}
+          center={locations[0]}
+          initialCenter={locations[0]}
+          zoom={8}
+          disableDefaultUI={true}
+      >
+          {locations.map(
+              coords => <Marker position={coords} />
+          )}
+
+      </Map>
+  )
 };
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBQSUcga6BXuJw0A7j2cGlHaCpWdV5Bdxg'
+})(Homepage);
