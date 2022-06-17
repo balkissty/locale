@@ -78,7 +78,7 @@ export default function Users() {
                                     <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                         Email
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    <th scope="col" className="w-8 h-8 text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                         Avatar
                                     </th>
                                     </tr>
