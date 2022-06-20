@@ -1,14 +1,44 @@
 
 export default function Profile() {
     return(
-        <div>
+        <div className="block p-6 bg-white max-w-lg mt-12 ml-24">
             <div className="max-w-4xl mx-auto mt-24">
                 <p className="text-3xl pb-6">
                     Edit Your Profile
                 </p>
                 <form className="grid">
-                    <input type="text" placeholder="Enter new password" className="py-1 pl-2 w-7/12 border-solid border-2 border-gray-500 rounded" />
-                    <button type="submit" className="mt-5 w-1/12 bg-pink-600 text-white font-medium border-0 p-2 rounded-lg">Submit</button>
+                    <input type="text" placeholder="Enter new password" className="form-control block
+                        w-full
+                        mb-6
+                        px-3
+                        py-1.5
+                        text-base
+                        font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" />
+                    <button type="submit" className="
+                    px-6
+                    py-2.5
+                    bg-blue-600
+                    text-white
+                    font-medium
+                    text-xs
+                    leading-tight
+                    uppercase
+                    rounded
+                    shadow-md
+                    hover:bg-blue-700 hover:shadow-lg
+                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                    active:bg-blue-800 active:shadow-lg
+                    transition
+                    duration-150
+                    ease-in-out">Change Password</button>
                 </form>
             </div>
         </div>
