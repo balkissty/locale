@@ -83,7 +83,7 @@ export default function Users() {
                                     </th>
                                     </tr>
                                 </thead>
-                                {isLoading && <p>Loading...</p>}
+                                {isLoading && <caption>Loading...</caption>}
                                 {contacts.length > 0 && (
                                 <tbody>
                                     {contacts.filter((contacts) => {
@@ -104,7 +104,7 @@ export default function Users() {
                                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 {user.email}
                                             </td>
-                                            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                            <td className=" w-8 h-8 text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 <img className="border-2 rounded-full" src={user.avatar} alt="avatar" />
                                             </td>
                                         </tr>

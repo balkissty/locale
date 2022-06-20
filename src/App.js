@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './App.css';
 import Homepage from './components/Homepage';
 import Profile from './components/Profile';
@@ -7,6 +8,11 @@ import { Routes, Route } from "react-router-dom";
 import Login from './components/Login';
 
 function App() {
+  const [token, setToken] = useState();
+
+  if (!token){
+    return <Login setToken={setToken} />
+  }
   return (
     <div className="App">
       <Navbar />
