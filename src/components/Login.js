@@ -1,21 +1,38 @@
+import React, { useState } from 'react'
 import { Formik } from 'formik';
-import GoogleLogin from 'react-google-login';
+import PropTypes from 'prop-types';
 
-const clientId = 'locale-350715.apps.googleusercontent.com'
+async function loginUser(credentials) {
+  return fetch('https://reqres.in/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
 
-export default function Login() {
-    const onSuccess = (res) => {
-      console.log('[Login Success currentUser:], res.profileObj');
-    };
-    
-    const onFailure = (res) => {
-      console.log('[Login Failed] res:', res);
-    };
+export default function Login( { setToken}) {
+  const[email, setEmail] = useState();
+  const[password, setPassword] = useState();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      email,
+      password
+    });
+    setToken(token);
+  }
+
+
+
 
 
 
     return(
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-24">
+        <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-24">
 
         <Formik
         initialValues={{ email: '', password: '' }}
@@ -41,19 +58,16 @@ export default function Login() {
          values,
          errors,
          touched,
-         handleChange,
          handleBlur,
-         handleSubmit,
          isSubmitting,
-         /* and other goodies */
        }) => (
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-6">
-                    <label for="InputEmail" className="form-label inline-block mb-2 text-gray-700">Email address</label>
+                    <label htmlFor="InputEmail" className="form-label inline-block mb-2 text-gray-700">Email address</label>
                     <input 
                         type="email"
                         name="email"
-                        onChange={handleChange}
+                        onChange={e => setEmail(e.target.value)}
                         onBlur={handleBlur}
                         value={values.email}
                         className="form-control
@@ -75,11 +89,11 @@ export default function Login() {
                         {errors.email && touched.email && errors.email}
                 </div>
                 <div className="form-group mb-6">
-                    <label for="Password" className="form-label inline-block mb-2 text-gray-700">Password</label>
+                    <label htmlFor="Password" className="form-label inline-block mb-2 text-gray-700">Password</label>
                     <input
                         type="password"
                         name="password"
-                        onChange={handleChange}
+                        onChange={e => setPassword(e.target.value)}
                         onBlur={handleBlur}
                         value={values.password}
                         className="form-control block
@@ -104,7 +118,7 @@ export default function Login() {
                         <input type="checkbox"
                         className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                         id="Check" />
-                        <label className="form-check-label inline-block text-gray-800" for="Check">Remember me</label>
+                        <label className="form-check-label inline-block text-gray-800" htmlFor="Check">Remember me</label>
                     </div>
                     <a href="#!"
                         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
@@ -132,17 +146,12 @@ export default function Login() {
                     <p className="text-gray-800 mt-6 text-center">Not a user? <a href="#!"
                         className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Register</a>
                     </p>
-                    <GoogleLogin
-                      className='flex justify-center '
-                      clientId={clientId}
-                      buttonText="Login with google"
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      cookiePolicy={'single_host_origin'}
-                    ></GoogleLogin>
             </form>
             )}
             </Formik>
         </div>
     )
+}
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
 }

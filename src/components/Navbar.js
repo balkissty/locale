@@ -15,7 +15,7 @@ export default function Navbar() {
                             <Link to="/">Home</Link>
                             <Link to="/users">Users</Link>
                             <Link to="/Profile">My Profile</Link>
-                            <Link to="/login">Logout</Link>
+                            <Link to="">Logout</Link>
                         </ul>
                     </div>
                 </nav>
