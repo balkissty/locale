@@ -41,5 +41,5 @@ function Homepage(props) {
     );
 } 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBQSUcga6BXuJw0A7j2cGlHaCpWdV5Bdxg'
+    apiKey: ''
   })(Homepage);
