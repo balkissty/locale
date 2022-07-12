@@ -1,47 +1,72 @@
-import React, { useState } from 'react'
+import '../App.css'
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 async function loginUser(credentials) {
   return fetch('https://reqres.in/api/login', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(credentials)
   })
     .then(data => data.json())
+    .catch(err => console.log(err))
  }
 
-export default function Login( { setToken}) {
-  const[email, setEmail] = useState();
-  const[password, setPassword] = useState();
+export default function Login( { setToken, token }) {
+  const[inputs, setInputs] = useState( {} );
+  const navigate = useNavigate();
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      email,
-      password
-    });
-    setToken(token);
+  useEffect( () => {
+    console.log(token)
+    if(token) {
+      navigate('/')
+    }
+  },[navigate, token]);
+ 
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
   }
 
 
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const token = await loginUser({
+        email: inputs.email,
+        password: inputs.password
+      });
+      setToken(token);
+      navigate('/')
+    } catch (error) {
+      console.log(error, "error")
+    }
+  }
+
+  
 
 
 
 
     return(
-        <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-24">
+        <div className=''>
+          <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-24">
           <h1 className="text-xl text-blue-600 mt-4 mb-6">Login to your Account</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-6">
                     <label htmlFor="InputEmail" className="form-label inline-block mb-2 text-gray-700">Email address</label>
                     <input 
+                        required
                         type="email"
                         name="email"
-                        onChange={e => setEmail(e.target.value)}
-                        value={email}
+                        onChange={handleChange}
+                        value={inputs.email || ""}
                         className="form-control
                         block
                         w-full
@@ -62,10 +87,11 @@ export default function Login( { setToken}) {
                 <div className="form-group mb-6">
                     <label htmlFor="Password" className="form-label inline-block mb-2 text-gray-700">Password</label>
                     <input
+                        required
                         type="password"
                         name="password"
-                        onChange={e => setPassword(e.target.value)}
-                        value={password}
+                        onChange={handleChange}
+                        value={inputs.password || ""}
                         className="form-control block
                         w-full
                         px-3
@@ -117,8 +143,9 @@ export default function Login( { setToken}) {
                     </p>
             </form>
         </div>
+        </div>
     )
 }
-Login.propTypes = {
+loginUser.propTypes = {
   setToken: PropTypes.func.isRequired
 }

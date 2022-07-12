@@ -1,13 +1,25 @@
-
+import React, { useState } from "react";
 export default function Profile() {
+    const[password, setPassword] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setPassword('');
+        alert(`Your Password has been changed to: ${password}`)
+      }
+
+
     return(
         <div className="block p-6 bg-white max-w-lg mt-12 ml-24">
             <div className="max-w-4xl mx-auto mt-24">
                 <p className="text-3xl pb-6">
                     Edit Your Profile
                 </p>
-                <form className="grid">
-                    <input type="text" placeholder="Enter new password" className="form-control block
+                <form className="grid" onSubmit={handleSubmit}>
+                    <input type="password" placeholder="Enter new password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control block
                         w-full
                         mb-6
                         px-3

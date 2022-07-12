@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar({ fixed }) {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
-
+  const logout = () => {
+    localStorage.clear('token');
+    window.location.href = "./login";
+  };
 
   return (
     <>
-      <nav className="relative text-md flex flex-wrap items-center justify-between px-2 py-3 bg-black text-white mb-3">
+      <nav className="relative text-md flex flex-wrap items-center justify-between px-2 py-3 bg-indigo-600 text-white">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <p
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              href="#pablo"
             >
               <Link to="/">MyLocale</Link>
             </p>
@@ -36,7 +38,6 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <p
                   className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
-                  href="#pablo"
                 >
                   <Link to="/">Home</Link>
                 </p>
@@ -44,7 +45,6 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <p
                   className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
-                  href="#pablo"
                 >
                   <Link to="/users">Users</Link>
                 </p>
@@ -52,17 +52,15 @@ export default function Navbar({ fixed }) {
               <li className="nav-item">
                 <p
                   className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
-                  href="#pablo"
                 >
                   <Link to="/Profile">My Profile</Link>
                 </p>
-              </li>
+              </li> 
               <li className="nav-item">
                 <p
-                  className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
-                  href="#pablo"
+                  className="px-3 py-2 cursor-pointer flex items-center text-md text-white hover:opacity-75" onClick={ logout }
                 >
-                  <Link to="/signup">Logout</Link>
+                  Logout
                 </p>
               </li>
             </ul>
