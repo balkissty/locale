@@ -10,8 +10,8 @@ export default function Profile() {
 
 
     return(
-        <div className="block p-6 bg-white max-w-lg mt-12 ml-24">
-            <div className="max-w-4xl mx-auto mt-24">
+        <div className="container mx-auto block bg-white max-w-lg px-4">
+            <div className=" mt-24">
                 <p className="text-3xl pb-6">
                     Edit Your Profile
                 </p>

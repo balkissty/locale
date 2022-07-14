@@ -11,8 +11,8 @@ export default function Navbar({ fixed }) {
 
   return (
     <>
-      <nav className="relative text-md flex flex-wrap items-center justify-between px-2 py-3 bg-indigo-600 text-white">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="relative text-md flex flex-wrap items-center justify-between py-3 bg-indigo-600 text-white">
+        <div className="container overflow-hidden px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <p
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"

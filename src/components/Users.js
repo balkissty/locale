@@ -39,7 +39,7 @@ export default function Users() {
 
     return(
         <div>
-            <div className="max-w-7xl mx-auto">
+            <div className="container mx-auto overflow-hidden px-4">
             <div className="flex justify-center">
                 <div className="mb-3 xl:w-96">
                     <div className="input-group mt-10 justify-end flex items-stretch w-full mb-4">
@@ -115,11 +115,11 @@ export default function Users() {
                                 </table>
                             </div>
                             </div>
-                            <div className="mb-8 mt-8 text-right">
-                                <button onClick={handlePreviousPage} className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-indigo-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <div className="mb-8 mt-8 text-center">
+                                <button onClick={handlePreviousPage} className="inline-flex items-center py-2 px-4 text-md font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-indigo-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                     Previous
                                 </button>
-                                <button onClick={handleNextPage} className="inline-flex items-center py-2 px-4 ml-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-indigo-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                <button onClick={handleNextPage} className="inline-flex items-center py-2 px-4 ml-3 text-md font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-indigo-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                     Next
                                 </button>
                             </div>
