@@ -20,12 +20,12 @@ export default function Login( { setToken, token }) {
   const[inputs, setInputs] = useState( {} );
   const navigate = useNavigate();
 
-  useEffect( () => {
+  /* useEffect( () => {
     console.log(token)
     if(token) {
       navigate('/')
     }
-  },[navigate, token]);
+  },[navigate, token]); */
  
 
   const handleChange = (event) => {
