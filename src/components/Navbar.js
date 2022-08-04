@@ -11,7 +11,7 @@ export default function Navbar({ fixed }) {
 
   return (
     <>
-      <nav className="relative text-md flex flex-wrap items-center justify-between py-3 bg-indigo-600 text-white">
+      <nav className="relative shadow-lg text-md flex flex-wrap items-center justify-between py-3 bg-indigo-600 text-white">
         <div className="container overflow-hidden px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <p
@@ -54,6 +54,20 @@ export default function Navbar({ fixed }) {
                   className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
                 >
                   <Link to="/Profile">My Profile</Link>
+                </p>
+              </li> 
+              <li className="nav-item">
+                <p
+                  className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
+                >
+                  <Link to="/home">Home</Link>
+                </p>
+              </li> 
+              <li className="nav-item">
+                <p
+                  className="px-3 py-2 flex items-center text-md text-white hover:opacity-75"
+                >
+                  <Link to="/navigation">Navigation</Link>
                 </p>
               </li> 
               <li className="nav-item">
